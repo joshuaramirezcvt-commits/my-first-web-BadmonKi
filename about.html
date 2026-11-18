@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About — COOKIE BAYOT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="gaming.html">Gaming</a>
+</nav>
+
+
+    <h1>About This Website</h1>
+    
+    <div class="content-box">
+        <h2>Welcome!</h2>
+        <p>This is my very first website — built with lots of patience and a little bit of magic! ✨</p>
+        <p>I made this from scratch using HTML, CSS, and VS Code. Every part of it is a new thing I learned along the way!</p>
+        <p>Thanks for stopping by — you're awesome! 🌟</p>
+    </div>
+
+    <footer>
+        &copy; 2026 About. All rights reserved.
+    </footer>
+    <!-- 🧠 Remember Name Across All Pages -->
+    <script>
+    // Load saved name when page opens
+    let currentUsername = localStorage.getItem('siteUsername') || 'Guest';
+    updateAllNameDisplays();
+    
+    function updateAllNameDisplays() {
+        const displays = document.querySelectorAll('#userNameDisplay, #visitorName');
+        displays.forEach(el => {
+            if (el) el.textContent = currentUsername;
+        });
+    }
+    
+    function saveUsername(name) {
+        currentUsername = name.trim() || 'Guest';
+        localStorage.setItem('siteUsername', currentUsername);
+        updateAllNameDisplays();
+    }
+    
+    // If welcome screen exists and no name yet → show it
+    window.addEventListener('load', function() {
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const savedName = localStorage.getItem('siteUsername');
+        
+        if (welcomeScreen && savedName) {
+            // Skip welcome screen — go straight to content
+            welcomeScreen.style.display = 'none';
+            const mainContent = document.getElementById('mainContent');
+            if (mainContent) {
+                mainContent.style.opacity = '1';
+                mainContent.style.pointerEvents = 'auto';
+            }
+        }
+    });
+    </script>
+
+</body>
+</html>

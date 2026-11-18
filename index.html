@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>BADmonki</title>
+</head>
+<body>
+
+    <!-- 🔒 WELCOME SCREEN -->
+    <div id="welcomeScreen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease;">
+        <div style="background: white; padding: 40px 50px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: center; max-width: 400px;">
+            <h2 style="color: #2c3e50; margin-bottom: 10px;">🎮 Welcome!</h2>
+            <p style="color: #666; margin-bottom: 25px;">Enter your nickname:</p>
+            
+            <input type="text" id="usernameInput" placeholder="Your nickname..." style="width: 100%; padding: 14px 18px; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; text-align: center; outline: none;">
+            
+            <button onclick="enterChat()" style="margin-top: 20px; padding: 14px 40px; background: #0084ff; color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold;">Enter 💬</button>
+        </div>
+    </div>
+
+    <!-- ✅ MAIN CONTENT -->
+    <div id="mainContent" style="opacity: 0; transition: opacity 0.5s ease; pointer-events: none;">
+
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="gaming.html">Gaming</a>
+        </nav>
+    </header>
+
+    <h1>BADmonki!</h1>
+    <p>GORILLA NA NAKA PAKYU!!!</p>
+
+    <button onclick="showPicture()">Click to See a Surprise! 🎉</button>
+
+    <div id="surprisePicture" style="display: none; text-align: center; margin-top: 30px;">
+        <img src="badmonki.jfif" alt="Surprise Picture" style="max-width: 400px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <p style="margin-top: 10px; font-weight: bold;">🦍 MGA BADINGGGGG!!! 🦍</p>
+    </div>
+
+    <script src="script.js"></script>
+
+    <p style="text-align:center; margin-top:40px;">Created by: BadMONKI ✨</p>
+
+    <img src="skiding.png" alt="My Photo" style="display:block; margin: 20px auto; max-width: 250px; border-radius: 8px;">
+
+    <footer style="background:#1a365d; color:white; text-align:center; padding:20px; margin-top:60px;">
+        <p>&copy; 2026 JOBERTA. Created by BADMONKI ★</p>
+    </footer>
+
+    </div> <!-- End of mainContent -->
+
+    <!-- 🧠 NAME REMEMBER SCRIPT -->
+    <script>
+    let currentUsername = localStorage.getItem('siteUsername') || 'Guest';
+    
+    function enterChat() {
+        const nameInput = document.getElementById('usernameInput');
+        const name = nameInput.value.trim() || "Guest";
+        
+        localStorage.setItem('siteUsername', name);
+        currentUsername = name;
+        
+        // Hide welcome, show page
+        document.getElementById('welcomeScreen').style.opacity = '0';
+        setTimeout(() => {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('mainContent').style.opacity = '1';
+            document.getElementById('mainContent').style.pointerEvents = 'auto';
+        }, 500);
+    }
+    
+    // Skip welcome if name already saved
+    window.addEventListener('load', function() {
+        const savedName = localStorage.getItem('siteUsername');
+        if (savedName) {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('mainContent').style.opacity = '1';
+            document.getElementById('mainContent').style.pointerEvents = 'auto';
+        }
+    });
+    
+    // Enter key to submit
+    document.getElementById('usernameInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') enterChat();
+    });
+    </script>
+
+</body>
+</html>

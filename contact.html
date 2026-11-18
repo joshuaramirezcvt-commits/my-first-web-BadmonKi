@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact — COOKIE BAYOT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="gaming.html">Gaming</a>
+</nav>
+
+
+    <h1>Get In Touch</h1>
+    
+    <div class="content-box">
+        <h2>Let's Connect!</h2>
+        <p>Have a question or just want to say hi? Feel free to reach out!</p>
+        
+        <div class="contact-info">
+            <p>📧 Email: mahigitdikumulangdimabilang.com.org</p>
+            <p>📍 Location: Ormoc</p>
+            <p>🌐 Website: my-first-web11.netlify.app</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 OBODAKETNEB. All rights reserved.
+    </footer>
+    <!-- 🧠 Remember Name Across All Pages -->
+    <script>
+    // Load saved name when page opens
+    let currentUsername = localStorage.getItem('siteUsername') || 'Guest';
+    updateAllNameDisplays();
+    
+    function updateAllNameDisplays() {
+        const displays = document.querySelectorAll('#userNameDisplay, #visitorName');
+        displays.forEach(el => {
+            if (el) el.textContent = currentUsername;
+        });
+    }
+    
+    function saveUsername(name) {
+        currentUsername = name.trim() || 'Guest';
+        localStorage.setItem('siteUsername', currentUsername);
+        updateAllNameDisplays();
+    }
+    
+    // If welcome screen exists and no name yet → show it
+    window.addEventListener('load', function() {
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const savedName = localStorage.getItem('siteUsername');
+        
+        if (welcomeScreen && savedName) {
+            // Skip welcome screen — go straight to content
+            welcomeScreen.style.display = 'none';
+            const mainContent = document.getElementById('mainContent');
+            if (mainContent) {
+                mainContent.style.opacity = '1';
+                mainContent.style.pointerEvents = 'auto';
+            }
+        }
+    });
+    </script>
+
+</body>
+</html>

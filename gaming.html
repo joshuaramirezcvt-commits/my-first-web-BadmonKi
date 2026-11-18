@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gaming — COOKIE BAYOT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="gaming.html">Gaming</a>
+</nav>
+
+    <h1>🎮 Gaming Threads</h1>
+
+    <div class="content-box">
+        <h2>⛏️ Minecraft — Best Survival Tips?</h2>
+        <p><strong>Posted by:</strong> Juswa | <strong>Date:</strong> Nov 18, 2026</p>
+        <hr>
+        <p>What's the best way to survive your first night in Minecraft? Share your tips below! 👇</p>
+    </div>
+
+    <div class="content-box" style="background: rgba(240, 248, 255, 0.9); margin-top: 10px;">
+        <p><strong>🦍 BadMonki says:</strong></p>
+        <p>Dig straight down! Jk jk — NEVER dig straight down! 😂 Get wood first, build a crafting table, then make tools!</p>
+    </div>
+
+    <div class="content-box" style="background: rgba(240, 248, 255, 0.9); margin-top: 10px;">
+        <p><strong>🎮 GamerDude says:</strong></p>
+        <p>Always carry a water bucket! It saves your life from lava and fall damage! 💧</p>
+    </div>
+
+    <div class="content-box" style="background: rgba(240, 248, 255, 0.9); margin-top: 10px;">
+        <p><strong>👻 You can add replies here too!</strong></p>
+        <p>Just edit this file and add more boxes like the ones above! ✏️</p>
+    </div>
+    <!-- 💬 MESSENGER-STYLE GROUP CHAT -->
+    <h2 style="text-align: center; color: #0084ff; margin-top: 40px;">💬 Group Chat</h2>
+    
+    <!-- Chat Messages Area -->
+    <div id="chatBox" style="max-width: 500px; margin: 20px auto; background: #ffffff; border-radius: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.15); padding: 20px; min-height: 300px;">
+        
+        <!-- Message from someone else (left side) -->
+        <div style="display: flex; align-items: flex-start; margin-bottom: 16px;">
+            <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; margin-right: 10px; flex-shrink: 0;">B</div>
+            <div>
+                <p style="margin: 0 0 4px 0; font-size: 12px; color: #0084ff; font-weight: 600;">BadMonki</p>
+                <div style="background: #f0f2f5; padding: 8px 14px; border-radius: 18px 18px 18px 4px; max-width: 350px; font-size: 14px; line-height: 1.4;">
+                    Dig straight down! Jk — NEVER dig straight down! 😂
+                </div>
+                <span style="font-size: 10px; color: #999; margin-left: 10px;">6:45 PM</span>
+            </div>
+        </div>
+
+        <!-- Your message (right side) -->
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 16px;">
+            <div style="text-align: right;">
+                <div style="background: #0084ff; color: white; padding: 8px 14px; border-radius: 18px 18px 4px 18px; max-width: 350px; font-size: 14px; line-height: 1.4;">
+                    Got it! Thanks for the tip! 👍
+                </div>
+                <span style="font-size: 10px; color: #999; margin-right: 10px;">6:46 PM ✓</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Input Area at Bottom -->
+    <div style="max-width: 500px; margin: 0 auto 40px; display: flex; gap: 10px; padding: 0 20px;">
+        <input type="text" id="chatInput" placeholder="Type a message..." style="flex: 1; padding: 12px 18px; border: 1px solid #ddd; border-radius: 22px; font-size: 15px; outline: none;">
+        <button onclick="sendMessage()" style="background: #0084ff; color: white; border: none; padding: 12px 24px; border-radius: 22px; font-size: 15px; cursor: pointer;">➤</button>
+    </div>
+
+    <script>
+    function sendMessage() {
+        const input = document.getElementById('chatInput');
+        const text = input.value.trim();
+        
+        if (!text) return;
+        
+        const chatBox = document.getElementById('chatBox');
+        const now = new Date();
+        const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
+        const newMsg = document.createElement('div');
+        newMsg.style.cssText = 'display: flex; justify-content: flex-end; margin-bottom: 16px;';
+        newMsg.innerHTML = `
+            <div style="text-align: right;">
+                <div style="background: #0084ff; color: white; padding: 8px 14px; border-radius: 18px 18px 4px 18px; max-width: 350px; font-size: 14px; line-height: 1.4; word-wrap: break-word;">
+                    ${escapeHtml(text)}
+                </div>
+                <span style="font-size: 10px; color: #999; margin-right: 10px;">${time} ✓</span>
+            </div>
+        `;
+        
+        chatBox.appendChild(newMsg);
+        input.value = '';
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    document.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && document.getElementById('chatInput') === document.activeElement) {
+            sendMessage();
+        }
+    });
+    </script>
+
+    </script>
+
+    <footer>
+        &copy; 2026 COOKIE BAYOT. All rights reserved.
+    </footer>
+    <!-- 🧠 Remember Name Across All Pages -->
+    <script>
+    // Load saved name when page opens
+    let currentUsername = localStorage.getItem('siteUsername') || 'Guest';
+    updateAllNameDisplays();
+    
+    function updateAllNameDisplays() {
+        const displays = document.querySelectorAll('#userNameDisplay, #visitorName');
+        displays.forEach(el => {
+            if (el) el.textContent = currentUsername;
+        });
+    }
+    
+    function saveUsername(name) {
+        currentUsername = name.trim() || 'Guest';
+        localStorage.setItem('siteUsername', currentUsername);
+        updateAllNameDisplays();
+    }
+    
+    // If welcome screen exists and no name yet → show it
+    window.addEventListener('load', function() {
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const savedName = localStorage.getItem('siteUsername');
+        
+        if (welcomeScreen && savedName) {
+            // Skip welcome screen — go straight to content
+            welcomeScreen.style.display = 'none';
+            const mainContent = document.getElementById('mainContent');
+            if (mainContent) {
+                mainContent.style.opacity = '1';
+                mainContent.style.pointerEvents = 'auto';
+            }
+        }
+    });
+    </script>
+    <!-- 🧠 Remember Name Across All Pages -->
+    <script>
+    // Load saved name when page opens
+    let currentUsername = localStorage.getItem('siteUsername') || 'Guest';
+    updateAllNameDisplays();
+    
+    function updateAllNameDisplays() {
+        const displays = document.querySelectorAll('#userNameDisplay, #visitorName');
+        displays.forEach(el => {
+            if (el) el.textContent = currentUsername;
+        });
+    }
+    
+    function saveUsername(name) {
+        currentUsername = name.trim() || 'Guest';
+        localStorage.setItem('siteUsername', currentUsername);
+        updateAllNameDisplays();
+    }
+    
+    // If welcome screen exists and no name yet → show it
+    window.addEventListener('load', function() {
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const savedName = localStorage.getItem('siteUsername');
+        
+        if (welcomeScreen && savedName) {
+            // Skip welcome screen — go straight to content
+            welcomeScreen.style.display = 'none';
+            const mainContent = document.getElementById('mainContent');
+            if (mainContent) {
+                mainContent.style.opacity = '1';
+                mainContent.style.pointerEvents = 'auto';
+            }
+        }
+    });
+    </script>
+
+</body>
+</html>
